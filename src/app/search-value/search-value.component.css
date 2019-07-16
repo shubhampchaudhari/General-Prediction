@@ -1,0 +1,26 @@
+.currentcompany table{
+    background-color: rgb(163, 191, 223);
+    height: auto;
+    padding: auto;
+    widows: 75px;
+    width: 100%;
+    border-radius: 0.5em;
+     
+}
+.pastvalue
+{
+ background: rgb(88, 83, 78);
+ display: block;
+ font-size: 1.5em;
+ padding: 1em;
+ text-align: center;
+ text-decoration: none;
+ color:rgb(226, 212, 212);
+}
+.pastSearches table{
+    background-color: rgb(218, 227, 236);
+    height: auto;
+    padding: auto;
+    width: 100%;
+
+}
