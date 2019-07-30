@@ -1,10 +1,6 @@
-import { Component, OnInit, Input } from '@angular/core';
-
-import { Router } from '@angular/router';
-
+import { Component, OnInit } from '@angular/core';
 import {StockValueService} from '../stock-value.service';
-
-
+import { StockValue } from '../stock-value/stock';
 
 @Component({
   selector: 'app-stock-value',
@@ -13,12 +9,24 @@ import {StockValueService} from '../stock-value.service';
 })
 export class StockValueComponent implements OnInit {
 
-  constructor(private router: Router) { }
+  private currentCompanyStockValue : StockValue;
+  private pastCompanyYouSearch : StockValue[] =[];
 
-  gotogetStockValue(){
-   this.router.navigate(['search']);
-  }
+  constructor(private stockvalueservice : StockValueService) { }
 
   ngOnInit() {}
 
+
+  getStockValue (companyName: string): void {
+    this.currentCompanyStockValue = this.stockvalueservice.getStockValue(companyName);
+    this.currentCompanyStockValue.searchTime = (new Date()).toTimeString();
+
+    const newStockValue : StockValue ={
+      companyName : companyName,
+      values : this.currentCompanyStockValue.values,
+      searchTime : (new Date()).toTimeString()
+    }
+    this.pastCompanyYouSearch.push(newStockValue);
   }
+}
+  
